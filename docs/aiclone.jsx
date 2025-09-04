@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
+import getReply from "./getReply";
 
 
 export default function AiClone() {
@@ -10,43 +10,67 @@ export default function AiClone() {
                     <h1 id="aiclone" className="font-bold text-4xl mb-4">AI clone</h1>
                 </div>
                 <p className="mb-16 leading-relaxed text-stone-700 text-lg">
-                    an attempt to create an AI that would reply to all of your questions 
-                    <br/> like i would
-                </p>
+            an attempt to create an AI that would reply to all of your questions 
+            <br/> like i would
+            </p>
             </header>
             <Input />
-        </>
+            </>
     )
 }
 
 
 
 function Input() {
-  const [text, setText] = useState("");
+    const [text, setText] = useState("");
+    const endRef = useRef(null)
+    const [messages, setMessages] = useState([]);
 
-  const handleSend = () => {
-    setText(""); 
-  };
+const handleSend = async () => {
+        const userMsg = { role: "user", content: text };
+        setMessages((prev) => [...prev, userMsg]);
+        setText("");
 
-  return (
-    <div className="bg-slate-200 flex justify-center items-baseline-last h-160 max-w-2xl border-2 p-2">
-      <div className="flex justify-center items-center w-full">
-        <textarea
-          className="border-2 w-full outline-none mb-0 pl-2 py-1 bg-slate-50"
-          rows={2}
-          placeholder="ask anything"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button
-          className="border-2 border-black w-8 ml-1 h-8 font-bold text-white bg-rose-500"
-          onClick={handleSend}
-        >
-          ↑
-        </button>
-      </div>
-    </div>
-  );
+        const reply = await getReply([...messages, userMsg]); // passa tutto lo storico
+        const aiMsg = { role: "assistant", content: reply };
+        setMessages((prev) => [...prev, aiMsg]);
+    };
+    useEffect(() => {
+        endRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
+
+    return (
+        <div className="max-w-xl border-2 p-2 bg-slate-200 flex flex-col h-[32rem]">
+            <div className="flex flex-col flex-1 overflow-y-auto px-2 space-y-1">
+                {messages.map((msg, i) => (
+                    <div
+                        className={`${i%2 === 0 ? "self-end" : "self-start"} bg-white px-2 py-1 max-w-xs`}
+                        key={i}
+                    >
+                       {msg.content} 
+                    </div>
+                ))}
+                <div ref={endRef} />
+            </div>
+
+            <div className="flex gap-2 pt-2">
+                <textarea
+                    className="border-2 flex-1 bg-slate-50 outline-none p-2"
+                    rows={2}
+                    placeholder="ask anything"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                />
+                <button
+                    onClick={handleSend}
+                    className="border-2 border-black w-10 h-10 font-bold text-white bg-rose-500"
+                >
+                    ↑
+                </button>
+            </div>
+        </div>
+    );
 }
 
 
