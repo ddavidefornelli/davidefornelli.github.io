@@ -6,6 +6,7 @@ export default function Navbar() {
     <nav className="flex items-center justify-start mb-16 text-lg">
       <Link to="/" className="text-sm mr-6 hover:text-rose-500 transition ease-linear text-stone-500">home</Link>
       <Link to="/projects" className="text-sm mr-6 hover:text-rose-500 transition ease-linear text-stone-500">projects</Link>
+      <Link to="/aiclone" className="text-sm mr-6 hover:text-rose-500 transition ease-linear text-stone-500">AI clone </Link>
     </nav>
   )
 }

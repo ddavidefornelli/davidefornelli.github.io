@@ -19,7 +19,7 @@ const projects = [
 
 function Project({name, state, date, achievements, url, description, technologies}) {
   return (
-  <div className="transition ease-linear hover:border-rose-500 hover:text-orange-500 flex flex-row items-start mb-16 border-stone-900 border-2 border-solid p-4">
+  <div className="transition ease-linear hover:border-rose-500 hover:text-orange-500 flex flex-row items-start mb-16 border-stone-900 border-3 border-solid p-4">
     <a className="w-full" href={url}>
       <div className="flex justify-between items-center">
         <h1 className="text-stone-900 text-3xl font-bold"><span className="text-rose-500"> &gt; </span>{name}</h1>
