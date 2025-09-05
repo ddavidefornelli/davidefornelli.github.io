@@ -11,7 +11,7 @@ export default function AiClone() {
                     <h1 id="aiclone" className="font-bold text-4xl mb-4">AI clone</h1>
                 </div>
                 <p className="mb-16 leading-relaxed text-stone-700 text-lg ">
-                    an attempt to create an ai that speaks like me! 
+                    an attempt to create an ai that speaks like me! <br/>
                     **(works only on my pc)
                 </p>
             </header>
