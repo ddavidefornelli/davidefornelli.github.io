@@ -5,17 +5,17 @@ import { } from "react-router-dom";
 
 export default function AiClone() {
     return (
-        <>
+        <div className="max-w-xl w-full">
             <header>
-                <div className="flex">
+                <div className="flex max-w-xl w-full">
                     <h1 id="aiclone" className="font-bold text-4xl mb-4">AI clone</h1>
                 </div>
-                <p className="mb-16 leading-relaxed text-stone-700 text-lg">
-            an attempt to create an AI that would reply to all of your questions like i would (works only on my laptop)!!!
-            </p>
+                <p className="mb-16 leading-relaxed text-stone-700 text-lg ">
+                    an attempt to create an ai that speaks like me! 
+                </p>
             </header>
             <Input />
-            </>
+        </div>
     )
 }
 
@@ -23,8 +23,8 @@ export default function AiClone() {
 
 function Input() {
     const [text, setText] = useState("");
-    const endRef = useRef(null)
     const [messages, setMessages] = useState([]);
+    const endRef = useRef(null)
 
 const handleSend = async () => {
         const userMsg = { role: "user", content: text };
@@ -41,7 +41,7 @@ const handleSend = async () => {
 
 
     return (
-        <div className="max-w-xl border-2 p-2 bg-slate-200 flex flex-col h-[32rem]">
+        <div className="border-2 p-2 bg-slate-200 flex flex-col h-[32rem] ">
             <div className="flex flex-col flex-1 overflow-y-auto px-2 space-y-1">
                 {messages.map((msg, i) => (
                     <div
@@ -58,7 +58,7 @@ const handleSend = async () => {
                 className="flex gap-2 pt-2"
             >
                 <textarea
-                    className="border-2 flex-1 bg-slate-50 outline-none p-2"
+                    className="border-2 flex-1 bg-slate-50 outline-none p-2 resize-none"
                     rows={2}
                     placeholder="ask anything"
                     value={text}
