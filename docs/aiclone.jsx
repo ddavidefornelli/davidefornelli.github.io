@@ -11,8 +11,7 @@ export default function AiClone() {
                     <h1 id="aiclone" className="font-bold text-4xl mb-4">AI clone</h1>
                 </div>
                 <p className="mb-16 leading-relaxed text-stone-700 text-lg">
-            an attempt to create an AI that would reply to all of your questions 
-            <br/> like i would (works only on my laptop)!!!
+            an attempt to create an AI that would reply to all of your questions like i would (works only on my laptop)!!!
             </p>
             </header>
             <Input />
