@@ -12,6 +12,7 @@ export default function AiClone() {
                 </div>
                 <p className="mb-16 leading-relaxed text-stone-700 text-lg ">
                     an attempt to create an ai that speaks like me! 
+                    **(works only on my pc)
                 </p>
             </header>
             <Input />
