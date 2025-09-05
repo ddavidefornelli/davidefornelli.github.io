@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import getReply from "./getReply";
+import { } from "react-router-dom";
 
 
 export default function AiClone() {
@@ -54,21 +55,29 @@ const handleSend = async () => {
                 <div ref={endRef} />
             </div>
 
-            <div className="flex gap-2 pt-2">
+            <form 
+                className="flex gap-2 pt-2"
+            >
                 <textarea
                     className="border-2 flex-1 bg-slate-50 outline-none p-2"
                     rows={2}
                     placeholder="ask anything"
                     value={text}
-                    onChange={(e) => setText(e.target.value)}
+                    onChange={(e) => {setText(e.target.value)}}
+                    onKeyDown={(e) => {
+                        if(e.key === "Enter" && !e.shiftKey) {
+                            e.preventDefault()
+                            handleSend(e)
+                        }
+                    }}
                 />
                 <button
-                    onClick={handleSend}
-                    className="border-2 border-black w-10 h-10 font-bold text-white bg-rose-500"
+                    type="submit"
+                    className={`border-2 border-black w-10 h-10 font-bold text-white ${text === "" ? "bg-red-300" : "bg-rose-500"}`}
                 >
                     ↑
                 </button>
-            </div>
+            </form>
         </div>
     );
 }
