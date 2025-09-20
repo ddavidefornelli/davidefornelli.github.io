@@ -1,8 +1,7 @@
-import Home from "./home";
-import Projects from "./projects";
-import AiClone from "./aiclone";
-import Navbar from "./NavBar";
-import Links from "./socials";
+import Home from "./pages/home";
+import Projects from "./pages/projects";
+import Navbar from "./components/navbar";
+import Links from "./components/socials";
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -14,7 +13,6 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/projects" element={<Projects />}></Route>
-            <Route path="/aiclone" element={<AiClone />}></Route>
           </Routes>
           
         <Links/>
